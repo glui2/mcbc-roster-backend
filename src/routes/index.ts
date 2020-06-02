@@ -4,8 +4,11 @@ export const register = ( app: express.Application ) => {
     const oidc = app.locals.oidc;
 
    // define a secure route handler
-   app.get( "/roster", oidc.ensureAuthenticated(), ( req: any, res ) => {
-    const user = req.userContext ? req.userContext.userinfo : null;
-    res.render( "roster", { isAuthenticated: req.isAuthenticated(), user } );
+   app.get( "/user/:id", oidc.ensureAuthenticated(), ( req: any, res ) => {
+    const defaultUser = {
+        firstName: "Gavin",
+        lastName: "Lui"
+    }
+    return res.json(defaultUser);
 } );
 };

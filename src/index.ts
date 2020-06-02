@@ -10,6 +10,9 @@ const port = process.env.SERVER_PORT;
 
 const app = express();
 
+// Configure Express to parse incoming JSON data
+app.use( express.json() );
+
 // Configure session auth
 sessionAuth.register( app );
 
