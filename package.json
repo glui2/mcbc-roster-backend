@@ -1,0 +1,42 @@
+{
+  "name": "mcbc-roster-backend",
+  "version": "1.0.0",
+  "description": "backend system for rostering application, allows management of users and permissions, workflow logic etc",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "initdb": "ts-node tools/initdb"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glui2/mcbc-roster-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glui2/mcbc-roster-backend/issues"
+  },
+  "homepage": "https://github.com/glui2/mcbc-roster-backend#readme",
+  "dependencies": {
+    "@okta/oidc-middleware": "^1.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.15.6",
+    "pg": "^8.2.1",
+    "pg-promise": "^10.5.6"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.6",
+    "@types/express-session": "^1.17.0",
+    "@types/node": "^14.0.9",
+    "@types/pg": "^7.14.3",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.3"
+  }
+}
