@@ -26,6 +26,7 @@
   "homepage": "https://github.com/glui2/mcbc-roster-backend#readme",
   "dependencies": {
     "@okta/oidc-middleware": "^1.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.15.6",
@@ -33,6 +34,7 @@
     "pg-promise": "^10.5.6"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.6",
     "@types/express-session": "^1.17.0",

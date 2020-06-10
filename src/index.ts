@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import * as sessionAuth from "./middleware/sessionAuth";
 import * as routes from "./routes";
+import cors from "cors";
 
 // initialise configuration
 dotenv.config();
@@ -12,6 +13,9 @@ const app = express();
 
 // Configure Express to parse incoming JSON data
 app.use( express.json() );
+
+// Enable cors for all requests
+app.use(cors());
 
 // Configure session auth
 sessionAuth.register( app );
