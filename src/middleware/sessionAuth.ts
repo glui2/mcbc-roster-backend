@@ -6,7 +6,7 @@ export const register = (app: any) => {
   const oidc = new ExpressOIDC({
     client_id: process.env.OKTA_CLIENT_ID,
     client_secret: "none",
-    issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`,
+    issuer: `${process.env.OKTA_BASE_URL}`,
     redirect_uri: `${process.env.HOST_URL}/authorization-code/callback`,
     scope: "openid profile",
   });

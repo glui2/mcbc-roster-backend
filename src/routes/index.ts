@@ -1,7 +1,7 @@
 import * as express from "express";
 import pgPromise from "pg-promise";
-import { access } from "fs";
 import OktaJwtVerifier from "@okta/jwt-verifier";
+import axios from "axios";
 
 export const register = (app: express.Application) => {
   const oidc = app.locals.oidc;
@@ -19,7 +19,7 @@ export const register = (app: express.Application) => {
 //   const OktaJwtVerifier = require('@okta/jwt-verifier');
   const oktaJwtVerifier = new OktaJwtVerifier({
     clientId: process.env.OKTA_CLIENT_ID,
-    issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`,
+    issuer: `${process.env.OKTA_BASE_URL}`,
   });
 
 
@@ -51,7 +51,13 @@ export const register = (app: express.Application) => {
 
         const accessToken = req.headers.authorization.trim().split(' ')[1];
         await oktaJwtVerifier.verifyAccessToken(accessToken, 'api://default');
-        res.json("Reyna");
+        axios.get(`${process.env.OKTA_BASE_URL}/v1/userinfo`,  {
+            headers: { Authorization: `Bearer ${accessToken}` },
+        }).then(
+            (response) => {
+                res.json(response.data.name);
+            }
+        )
       } catch (error) {
         // tslint:disable-next-line:no-console
         console.log(error.message);

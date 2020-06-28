@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/glui2/mcbc-roster-backend#readme",
   "dependencies": {
+    "@okta/jwt-verifier": "^1.0.0",
     "@okta/oidc-middleware": "^1.0.2",
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
