@@ -3,6 +3,7 @@ import express from "express";
 import * as sessionAuth from "./middleware/sessionAuth";
 import * as routes from "./routes";
 import cors from "cors";
+import { createOktaVerifier } from "./middleware/oktaVerifier";
 
 // initialise configuration
 dotenv.config();
@@ -17,8 +18,8 @@ app.use( express.json() );
 // Enable cors for all requests
 app.use(cors());
 
-// Configure session auth
-sessionAuth.register( app );
+// Authenticate all requests
+app.use(createOktaVerifier().verifyRequest);
 
 // Configure routes
 routes.register( app );
